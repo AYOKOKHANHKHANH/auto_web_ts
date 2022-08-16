@@ -1,5 +1,5 @@
 exports.config = {
-    specs: ['./test/specs/**/anonymous-1st.e2e.ts'],
+    specs: ['./test/specs/**/hahalolo.e2e.ts'],
     exclude: [],
     maxInstances: 10,
     capabilities: [
