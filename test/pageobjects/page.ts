@@ -1,5 +1,9 @@
 export default class Page {
-    open(path: string) {
-        return browser.url(`${path}`);
+    getUrl() {
+        return 'https://sb.halome.dev/';
+    }
+
+    open() {
+        return browser.url(this.getUrl());
     }
 }

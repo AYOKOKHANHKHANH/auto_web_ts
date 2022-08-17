@@ -1,24 +1,30 @@
+import { AnonymousDt } from '../../data/login/anonymous-dt';
+import LeftSidebar from '../../pageobjects/left-sidebar/left-sidebar';
 import Anonymous from '../../pageobjects/login/anonymous';
 
-const URL = 'https://sb.halome.dev/';
-const PHONE = Math.floor(Math.random() * 1000000000).toString();
-const OTP = '000000';
-const NAME = 'Horse';
-
 describe('TESS THE FIRST ANONYMOUS LOGIN FLOWS', async () => {
-    beforeEach(async () => {
-        await Anonymous.open(URL);
+    before(async () => {
+        await Anonymous.open();
         await browser.setWindowSize(1920, 1080);
         await Anonymous.clickLoginAnonymous();
-        await Anonymous.enterPhoneNumber(PHONE);
+    });
+
+    it('should open input display name page', async () => {
+        await Anonymous.enterPhoneNumber(AnonymousDt.NEW_PHONE);
         await Anonymous.clickStartLogin();
-        await Anonymous.enterOtp(OTP);
+        await Anonymous.enterOtp(AnonymousDt.OTP);
+        await expect(Anonymous.titleLoginVerify).toHaveText(AnonymousDt.TITLE_INPUT_DISPLAY_NAME_PAGE);
+        await expect(Anonymous.btnContinue).not.toBeDisabled();
+    });
+
+    it('should enable continue button', async () => {
+        await Anonymous.enterDisplayName(AnonymousDt.DISPLAY_NAME);
+        await expect(Anonymous.btnContinue).not.toBeDisabled();
     });
 
     it('should have the same display name', async () => {
-        await Anonymous.enterDisplayName(NAME);
         await Anonymous.clickContinue();
-        await Anonymous.clickAvatar();
-        await expect(Anonymous.displayNameVerify).toHaveText(NAME);
+        await LeftSidebar.clickAvatar();
+        await expect(Anonymous.displayNameVerify).toHaveText(AnonymousDt.DISPLAY_NAME);
     });
 });
