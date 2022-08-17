@@ -21,6 +21,34 @@ class Hahalolo extends Page {
         return $('.MuiButton-label');
     }
 
+    get titleHalome() {
+        return $('#halome-logo-slogan');
+    }
+
+    get titleLogin() {
+        return $('#auth-wrapper-title');
+    }
+
+    get btnBack() {
+        return $('#auth-wrapper-go-back');
+    }
+
+    get btnContinue() {
+        return $('#halo-login-form-button-ok');
+    }
+
+    get btnAccept() {
+        return $('#otp-form-need-button-ok');
+    }
+
+    get inputPinCode() {
+        return $('input[id="phone-verify-form-input-1"]');
+    }
+
+    get notifyPinFalse() {
+        return $('#otp-form-need-error');
+    }
+
     async clickLoginHahalolo() {
         return this.btnLoginHahalolo.click();
     }
@@ -31,6 +59,31 @@ class Hahalolo extends Page {
 
     async clickLogin() {
         return this.btnLogin.click();
+    }
+
+    async enterUsername(username) {
+        return this.inputUsername.setValue(username);
+    }
+
+    async enterPassword(password) {
+        return this.inputPassword.setValue(password);
+    }
+
+    async clickBack() {
+        return this.btnBack.click();
+    }
+
+    async clickContinue() {
+        return this.btnContinue.click();
+    }
+
+    async clickAccept() {
+        return this.btnAccept.click();
+    }
+
+    async enterPinCode(pin) {
+        await this.inputPinCode.clearValue();
+        return await this.inputPinCode.setValue(pin);
     }
 }
 

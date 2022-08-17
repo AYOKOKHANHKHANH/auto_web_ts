@@ -6,7 +6,7 @@ class Anonymous extends Page {
     }
 
     get btnStartLogin() {
-        return $('button[id="phone-login-form-button-ok"]');
+        return $('#phone-login-form-button-ok');
     }
 
     get titleLoginVerify() {
@@ -26,7 +26,7 @@ class Anonymous extends Page {
     }
 
     get inputOtp() {
-        return $('input[id="phone-verify-form-input-1"]');
+        return $('#phone-verify-form-input-1');
     }
 
     get otpErrorVerify() {
@@ -39,10 +39,6 @@ class Anonymous extends Page {
 
     get btnContinue() {
         return $('button[id="phone-login-form-button-ok"]');
-    }
-
-    get btnAvatar() {
-        return $('#auth-user-profile-button');
     }
 
     get displayNameVerify() {
@@ -58,6 +54,7 @@ class Anonymous extends Page {
     }
 
     async clickStartLogin() {
+        await this.btnStartLogin.waitForClickable( {timeout:3000} );
         return this.btnStartLogin.click();
     }
 
@@ -70,20 +67,17 @@ class Anonymous extends Page {
     }
 
     async enterOtp(Otp) {
+        await this.inputOtp.waitForDisplayed({ timeout: 3000 });
         return this.inputOtp.setValue(Otp);
     }
 
     async enterDisplayName(name) {
+        await this.inputDisplayName.waitForDisplayed({ timeout: 3000 });
         return this.inputDisplayName.setValue(name);
     }
 
     async clickContinue() {
         return this.btnContinue.click();
     }
-
-    async clickAvatar() {
-        return this.btnAvatar.click();
-    }
 }
-
 export default new Anonymous();

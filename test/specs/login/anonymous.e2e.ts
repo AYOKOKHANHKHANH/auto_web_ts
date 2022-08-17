@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { AnonymousDt } = require('../../data/login/anonymous-dt');
+import { AnonymousDt } from '../../data/login/anonymous-dt';
 import Anonymous from '../../pageobjects/login/anonymous';
 
 describe('TEST ANONYMOUS LOGIN FLOWS', async () => {
@@ -29,7 +28,7 @@ describe('TEST ANONYMOUS LOGIN FLOWS', async () => {
         await expect(Anonymous.btnStartLogin).toBeDisabled();
     });
 
-    it('should disable login button when input < 5 number', async () => {
+    it('should disable login button when input less more than 5', async () => {
         await Anonymous.enterPhoneNumber(AnonymousDt.INVALID_PHONE_NUMBER);
         await expect(Anonymous.btnStartLogin).toBeDisabled();
     });

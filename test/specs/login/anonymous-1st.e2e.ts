@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { AnonymousDt } = require('../../data/login/anonymous-dt');
+import { AnonymousDt } from '../../data/login/anonymous-dt';
+import LeftSidebar from '../../pageobjects/left-sidebar/left-sidebar';
 import Anonymous from '../../pageobjects/login/anonymous';
 
 describe('TESS THE FIRST ANONYMOUS LOGIN FLOWS', async () => {
@@ -24,7 +24,7 @@ describe('TESS THE FIRST ANONYMOUS LOGIN FLOWS', async () => {
 
     it('should have the same display name', async () => {
         await Anonymous.clickContinue();
-        await Anonymous.clickAvatar();
+        await LeftSidebar.clickAvatar();
         await expect(Anonymous.displayNameVerify).toHaveText(AnonymousDt.DISPLAY_NAME);
     });
 });
