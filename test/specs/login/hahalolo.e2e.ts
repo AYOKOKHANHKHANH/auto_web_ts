@@ -63,17 +63,16 @@ describe('TEST LOGIN HAHALOLO FLOWS', async () => {
         await expect(Hahalolo.btnAccept).toBeDisabled();
     });
 
-    // it('should disable accept button when input pin code less more than 6', async () => {
-    //     await Hahalolo.enterPinCode('4548');
-    //     await expect(Hahalolo.btnAccept).toBeDisabled();
-    //     await Hahalolo.inputPinCode.clearValue();
-    // });
-    //
-    // it('should show error notify when input pin code is false', async () => {
-    //     await Hahalolo.enterPinCode('123123');
-    //     await Hahalolo.clickAccept();
-    //     await expect(Hahalolo.notifyPinFalse).toBeExisting();
-    // });
+    it('should disable accept button when input pin code less more than 6', async () => {
+        await Hahalolo.enterPinCode('223');
+        await expect(Hahalolo.btnAccept).toBeDisabled();
+    });
+
+    it('should show error notify when input pin code is false', async () => {
+        await Hahalolo.enterPinCode('454878');
+        await Hahalolo.clickAccept();
+        await expect(Hahalolo.notifyPinFalse).toBeExisting();
+    });
 
     it('should into home page', async () => {
         await Hahalolo.enterPinCode(HahaloloDt.PIN);

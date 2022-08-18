@@ -50,6 +50,7 @@ class Hahalolo extends Page {
     }
 
     async clickLoginHahalolo() {
+        await this.btnLoginHahalolo.waitForClickable({ timeout: 10000 });
         return this.btnLoginHahalolo.click();
     }
 
@@ -78,6 +79,7 @@ class Hahalolo extends Page {
     }
 
     async clickAccept() {
+        await this.btnAccept.waitForClickable({ timeout: 10000 });
         return this.btnAccept.click();
     }
 
