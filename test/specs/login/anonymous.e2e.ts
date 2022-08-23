@@ -1,4 +1,4 @@
-import { AnonymousDt } from '../../data/login/anonymous-dt';
+import { AnonymousDt } from '../../data/login/anonymous';
 import Anonymous from '../../pageobjects/login/anonymous';
 
 describe('TEST ANONYMOUS LOGIN FLOWS', async () => {

@@ -1,4 +1,4 @@
-import { AnonymousDt } from '../../data/login/anonymous-dt';
+import { AnonymousDt } from '../../data/login/anonymous';
 import LeftSidebar from '../../pageobjects/left-sidebar/left-sidebar';
 import Anonymous from '../../pageobjects/login/anonymous';
 
