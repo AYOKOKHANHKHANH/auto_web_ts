@@ -1,4 +1,4 @@
-import { HahaloloDt } from '../../data/login/hahalolo-dt';
+import { HahaloloDt } from '../../data/login/hahalolo';
 import Hahalolo from '../../pageobjects/login/hahalolo';
 
 describe('TEST LOGIN HAHALOLO FLOWS', async () => {
