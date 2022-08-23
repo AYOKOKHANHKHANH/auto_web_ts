@@ -63,10 +63,12 @@ class Hahalolo extends Page {
     }
 
     async enterUsername(username) {
+        await this.inputUsername.waitForClickable({ timeout: 20000 });
         return this.inputUsername.setValue(username);
     }
 
     async enterPassword(password) {
+        await this.inputPassword.waitForClickable({ timeout: 20000 });
         return this.inputPassword.setValue(password);
     }
 
@@ -79,7 +81,7 @@ class Hahalolo extends Page {
     }
 
     async clickAccept() {
-        await this.btnAccept.waitForClickable({ timeout: 10000 });
+        await this.btnAccept.waitForClickable({ timeout: 20000 });
         return this.btnAccept.click();
     }
 

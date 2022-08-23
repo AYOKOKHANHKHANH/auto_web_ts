@@ -3,7 +3,9 @@ export default class Page {
         return 'https://sb.halome.dev/';
     }
 
-    open() {
-        return browser.url(this.getUrl());
+    async open() {
+        await browser.url(this.getUrl());
+        await browser.setWindowSize(1000, 1000);
+        // await browser.maximizeWindow();
     }
 }

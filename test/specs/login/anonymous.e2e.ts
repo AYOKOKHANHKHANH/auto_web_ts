@@ -4,7 +4,6 @@ import Anonymous from '../../pageobjects/login/anonymous';
 describe('TEST ANONYMOUS LOGIN FLOWS', async () => {
     before(async () => {
         await Anonymous.open();
-        await browser.setWindowSize(1920, 1080);
     });
 
     it('should disable login button', async () => {

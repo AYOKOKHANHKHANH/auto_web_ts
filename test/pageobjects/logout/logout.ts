@@ -15,6 +15,10 @@ class Logout {
         return $('#modal-button-ok');
     }
 
+    get btnIconClose() {
+        return $('#modal-wrapper-button-close');
+    }
+
     async clickLogout() {
         return this.btnLogout.click();
     }
@@ -25,6 +29,10 @@ class Logout {
 
     async clickOk() {
         return this.btnOk.click();
+    }
+
+    async clickIconClose() {
+        return this.btnIconClose.click();
     }
 }
 

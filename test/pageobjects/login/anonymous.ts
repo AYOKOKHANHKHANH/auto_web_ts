@@ -72,7 +72,7 @@ class Anonymous extends Page {
     }
 
     async enterDisplayName(name) {
-        await this.inputDisplayName.waitForDisplayed({ timeout: 3000 });
+        await this.inputDisplayName.waitForDisplayed({ timeout: 10000 });
         return this.inputDisplayName.setValue(name);
     }
 

@@ -6,7 +6,6 @@ import Logout from '../../pageobjects/logout/logout';
 describe('TEST LOGOUT FLOWS', async () => {
     before(async () => {
         await Hahalolo.open();
-        await browser.setWindowSize(1920, 1080);
         await Hahalolo.clickLoginHahalolo();
         await Hahalolo.enterUsername(HahaloloDt.USERNAME);
         await Hahalolo.enterPassword(HahaloloDt.PASSWORD);
@@ -14,16 +13,22 @@ describe('TEST LOGOUT FLOWS', async () => {
         await Hahalolo.clickContinue();
         await Hahalolo.enterPinCode(HahaloloDt.PIN);
         await Hahalolo.clickAccept();
+        await LeftSidebar.clickAvatar();
     });
 
     it('should open logout modal', async () => {
-        await LeftSidebar.clickAvatar();
         await Logout.clickLogout();
         await expect(Logout.tiileLogoutVerify).toBeExisting();
     });
 
-    it('should close logout modal', async () => {
+    it('should close logout modal when click cancel button', async () => {
         await Logout.clickCancel();
+        await expect(Logout.tiileLogoutVerify).not.toBeExisting();
+    });
+
+    it('should close logout modal when click icon close', async () => {
+        await Logout.clickLogout();
+        await Logout.clickIconClose();
         await expect(Logout.tiileLogoutVerify).not.toBeExisting();
     });
 

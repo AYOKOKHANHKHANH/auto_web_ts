@@ -6,11 +6,18 @@ exports.config = {
         {
             maxInstances: 5,
             browserName: 'chrome',
-            'goog:chromeOptions': {
-                args: [],
-            },
             acceptInsecureCerts: true,
         },
+        {
+            maxInstances: 5,
+            browserName: 'edge',
+            acceptInsecureCerts: true,
+        },
+        // {
+        //     maxInstances: 5,
+        //     browserName: 'firefox',
+        //     acceptInsecureCerts: true,
+        // },
     ],
     logLevel: 'info',
     bail: 0,
@@ -18,7 +25,7 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
     framework: 'mocha',
     reporters: ['spec'],
     mochaOpts: {
