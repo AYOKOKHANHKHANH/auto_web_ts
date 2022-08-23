@@ -1,5 +1,5 @@
-import { ForgotPinDt } from '../../data/login/forgot-pin-dt';
-import { HahaloloDt } from '../../data/login/hahalolo-dt';
+import { ForgotPinDt } from '../../data/login/forgot-pin';
+import { HahaloloDt } from '../../data/login/hahalolo';
 import ForgotPin from '../../pageobjects/login/forgot-pin';
 import Hahalolo from '../../pageobjects/login/hahalolo';
 
