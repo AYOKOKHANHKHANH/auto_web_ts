@@ -13,9 +13,14 @@ exports.config = {
             browserName: 'edge',
             acceptInsecureCerts: true,
         },
+        {
+            maxInstances: 5,
+            browserName: 'firefox',
+            acceptInsecureCerts: true,
+        },
         // {
         //     maxInstances: 5,
-        //     browserName: 'firefox',
+        //     browserName: 'opera',
         //     acceptInsecureCerts: true,
         // },
     ],
@@ -25,7 +30,7 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['selenium-standalone'],
+    services: ['geckodriver'],
     framework: 'mocha',
     reporters: ['spec'],
     mochaOpts: {

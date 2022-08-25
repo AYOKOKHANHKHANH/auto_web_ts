@@ -54,7 +54,7 @@ class Anonymous extends Page {
     }
 
     async clickStartLogin() {
-        await this.btnStartLogin.waitForClickable( {timeout:3000} );
+        await this.btnStartLogin.waitForClickable({timeout:3000} );
         return this.btnStartLogin.click();
     }
 
@@ -67,8 +67,8 @@ class Anonymous extends Page {
     }
 
     async enterOtp(Otp) {
-        await this.inputOtp.waitForDisplayed({ timeout: 3000 });
-        return this.inputOtp.setValue(Otp);
+        await this.inputOtp.waitForDisplayed({ timeout: 10000 });
+        await this.inputOtp.setValue(Otp);
     }
 
     async enterDisplayName(name) {

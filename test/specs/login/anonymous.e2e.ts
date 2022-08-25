@@ -1,4 +1,4 @@
-import { AnonymousDt } from '../../data/login/anonymous-dt';
+import { AnonymousDt } from '../../data/login/anonymous';
 import Anonymous from '../../pageobjects/login/anonymous';
 
 describe('TEST ANONYMOUS LOGIN FLOWS', async () => {
@@ -62,8 +62,12 @@ describe('TEST ANONYMOUS LOGIN FLOWS', async () => {
         await expect(Anonymous.otpErrorVerify).toBeExisting();
     });
 
-    it('should open home page', async () => {
+    it('should not existing resend Otp via SMS button', async () => {
         await Anonymous.clickResendOtpViaSms();
+        await expect(Anonymous.btnResendOtpViaSms).not.toBeExisting();
+    });
+
+    it('should open home page', async () => {
         await Anonymous.enterOtp(AnonymousDt.OTP);
         await expect(browser).toHaveUrl(Anonymous.getUrl());
     });

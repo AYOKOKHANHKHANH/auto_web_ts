@@ -1,4 +1,4 @@
-import { HahaloloDt } from '../../data/login/hahalolo-dt';
+import { HahaloloDt } from '../../data/login/hahalolo';
 import LeftSidebar from '../../pageobjects/left-sidebar/left-sidebar';
 import Hahalolo from '../../pageobjects/login/hahalolo';
 import Logout from '../../pageobjects/logout/logout';

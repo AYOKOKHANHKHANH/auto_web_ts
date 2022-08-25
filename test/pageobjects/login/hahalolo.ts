@@ -55,6 +55,7 @@ class Hahalolo extends Page {
     }
 
     async clickNotYou() {
+        await this.btnNotYou.waitForClickable({ timeout: 10000 });
         return this.btnNotYou.click();
     }
 
