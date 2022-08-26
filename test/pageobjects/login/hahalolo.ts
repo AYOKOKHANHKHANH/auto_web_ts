@@ -78,6 +78,7 @@ class Hahalolo extends Page {
     }
 
     async clickContinue() {
+        await this.btnContinue.waitForClickable({ timeout: 20000 });
         return this.btnContinue.click();
     }
 

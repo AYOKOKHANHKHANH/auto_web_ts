@@ -28,12 +28,13 @@ class ForgotPin {
     get notifyOtpFalse() {
         return $('#otp-form-otp-error');
     }
-    
+
     get btnBack() {
         return $('#auth-wrapper-go-back');
     }
 
     async clickForgotPinCode() {
+        await this.btnForgotPinCode.waitForClickable({ timeout: 10000 });
         return this.btnForgotPinCode.click();
     }
 
