@@ -1,6 +1,8 @@
-import Page from '../page';
+import { username, password, pin } from '../../../../data/login';
+import Page from '../../../page';
 
 class Hahalolo extends Page {
+    TIMEOUT = 20000;
     get btnLoginHahalolo() {
         return $('button[id="platforms-halo"]');
     }
@@ -50,12 +52,12 @@ class Hahalolo extends Page {
     }
 
     async clickLoginHahalolo() {
-        await this.btnLoginHahalolo.waitForClickable({ timeout: 10000 });
+        await this.btnLoginHahalolo.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnLoginHahalolo.click();
     }
 
     async clickNotYou() {
-        await this.btnNotYou.waitForClickable({ timeout: 10000 });
+        await this.btnNotYou.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnNotYou.click();
     }
 
@@ -64,12 +66,12 @@ class Hahalolo extends Page {
     }
 
     async enterUsername(username) {
-        await this.inputUsername.waitForClickable({ timeout: 20000 });
+        await this.inputUsername.waitForClickable({ timeout: this.TIMEOUT });
         return this.inputUsername.setValue(username);
     }
 
     async enterPassword(password) {
-        await this.inputPassword.waitForClickable({ timeout: 20000 });
+        await this.inputPassword.waitForClickable({ timeout: this.TIMEOUT });
         return this.inputPassword.setValue(password);
     }
 
@@ -78,18 +80,29 @@ class Hahalolo extends Page {
     }
 
     async clickContinue() {
-        await this.btnContinue.waitForClickable({ timeout: 20000 });
+        await this.btnContinue.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnContinue.click();
     }
 
     async clickAccept() {
-        await this.btnAccept.waitForClickable({ timeout: 20000 });
+        await this.btnAccept.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnAccept.click();
     }
 
     async enterPinCode(pin) {
         await this.inputPinCode.clearValue();
         return await this.inputPinCode.setValue(pin);
+    }
+
+    async loginSuccess() {
+        await this.open();
+        await this.clickLoginHahalolo();
+        await this.enterUsername(username.USERNAME);
+        await this.enterPassword(password.PASSWORD);
+        await this.clickLogin();
+        await this.clickContinue();
+        await this.enterPinCode(pin.PIN);
+        await this.clickAccept();
     }
 }
 

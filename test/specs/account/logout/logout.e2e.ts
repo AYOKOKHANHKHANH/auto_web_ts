@@ -1,18 +1,10 @@
-import { HahaloloDt } from '../../data/login/hahalolo';
-import LeftSidebar from '../../pageobjects/left-sidebar/left-sidebar';
-import Hahalolo from '../../pageobjects/login/hahalolo';
-import Logout from '../../pageobjects/logout/logout';
+import Hahalolo from '../../../pageobjects/account/login/hahalolo/hahalolo';
+import Logout from '../../../pageobjects/account/logout/logout';
+import LeftSidebar from '../../../pageobjects/left-sidebar/left-sidebar';
 
 describe('TEST LOGOUT FLOWS', async () => {
     before(async () => {
-        await Hahalolo.open();
-        await Hahalolo.clickLoginHahalolo();
-        await Hahalolo.enterUsername(HahaloloDt.USERNAME);
-        await Hahalolo.enterPassword(HahaloloDt.PASSWORD);
-        await Hahalolo.clickLogin();
-        await Hahalolo.clickContinue();
-        await Hahalolo.enterPinCode(HahaloloDt.PIN);
-        await Hahalolo.clickAccept();
+        await Hahalolo.loginSuccess();
         await LeftSidebar.clickAvatar();
     });
 

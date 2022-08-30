@@ -34,6 +34,11 @@ class Logout {
     async clickIconClose() {
         return this.btnIconClose.click();
     }
+
+    async logoutSuccess() {
+        await this.clickLogout();
+        await this.clickOk();
+    }
 }
 
 export default new Logout();

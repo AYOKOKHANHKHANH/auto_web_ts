@@ -1,6 +1,7 @@
-import Page from '../page';
+import Page from '../../../page';
 
 class ResetPinCode extends Page {
+    TIMEOUT = 10000;
     get inputNewPin() {
         return $('#otp-form-set-pin-input-1-1');
     }
@@ -18,12 +19,12 @@ class ResetPinCode extends Page {
     }
 
     async enterNewPin(pin) {
-        await this.inputNewPin.waitForDisplayed({ timeout: 10000 });
+        await this.inputNewPin.waitForDisplayed({ timeout: this.TIMEOUT });
         await this.inputNewPin.setValue(pin);
     }
 
     async enterNewPinAgain(pin) {
-        await this.inputNewPinAgain.waitForDisplayed({ timeout: 10000 });
+        await this.inputNewPinAgain.waitForDisplayed({ timeout: this.TIMEOUT });
         await this.inputNewPinAgain.setValue(pin);
     }
 

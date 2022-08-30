@@ -1,6 +1,7 @@
-import Page from '../page';
+import Page from '../../../page';
 
-class Anonymous extends Page {
+class Halome extends Page {
+    TIMEOUT = 10000;
     get inputPhoneNumber() {
         return $('input[id="phone-login-form-input-phone"]');
     }
@@ -13,7 +14,7 @@ class Anonymous extends Page {
         return $('#auth-wrapper-title');
     }
 
-    get btnLoginAnonymous() {
+    get btnLoginHalome() {
         return $('button[id="platforms-halome"]');
     }
 
@@ -45,8 +46,8 @@ class Anonymous extends Page {
         return $('#auth-user-content-display-name');
     }
 
-    async clickLoginAnonymous() {
-        return this.btnLoginAnonymous.click();
+    async clickLoginHalome() {
+        return this.btnLoginHalome.click();
     }
 
     async enterPhoneNumber(phone: string) {
@@ -54,7 +55,7 @@ class Anonymous extends Page {
     }
 
     async clickStartLogin() {
-        await this.btnStartLogin.waitForClickable({timeout:3000} );
+        await this.btnStartLogin.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnStartLogin.click();
     }
 
@@ -67,12 +68,12 @@ class Anonymous extends Page {
     }
 
     async enterOtp(Otp) {
-        await this.inputOtp.waitForDisplayed({ timeout: 10000 });
+        await this.inputOtp.waitForDisplayed({ timeout: this.TIMEOUT });
         await this.inputOtp.setValue(Otp);
     }
 
     async enterDisplayName(name) {
-        await this.inputDisplayName.waitForDisplayed({ timeout: 10000 });
+        await this.inputDisplayName.waitForDisplayed({ timeout: this.TIMEOUT });
         return this.inputDisplayName.setValue(name);
     }
 
@@ -80,4 +81,4 @@ class Anonymous extends Page {
         return this.btnContinue.click();
     }
 }
-export default new Anonymous();
+export default new Halome();

@@ -1,6 +1,7 @@
-import Page from '../page';
+import Page from '../../../page';
 
-class ForgotPin {
+class ForgotPin extends Page {
+    TIMEOUT = 10000;
     get btnForgotPinCode() {
         return $('#otp-form-need-button-forgot');
     }
@@ -34,7 +35,7 @@ class ForgotPin {
     }
 
     async clickForgotPinCode() {
-        await this.btnForgotPinCode.waitForClickable({ timeout: 10000 });
+        await this.btnForgotPinCode.waitForClickable({ timeout: this.TIMEOUT });
         return this.btnForgotPinCode.click();
     }
 
