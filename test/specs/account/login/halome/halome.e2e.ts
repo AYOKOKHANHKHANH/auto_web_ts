@@ -46,6 +46,11 @@ describe('TEST Halome LOGIN FLOWS', async () => {
         await Halome.clickStartLogin();
         await expect(Halome.titleLoginVerify).toHaveText(verifyTitle.OTP_HALOME);
         await expect(Halome.btnResendOtpViaSms).not.toBeDisabled();
+        await expect(Halome.btnVerifyResend).toBeDisabled();
+    });
+
+    it('should focus at Character 1', async () => {
+        await expect(Halome.inputOtp1).toBeFocused();
     });
 
     it('should not back previous page', async () => {
@@ -60,11 +65,61 @@ describe('TEST Halome LOGIN FLOWS', async () => {
         await expect(Halome.titleLoginVerify).toHaveText(verifyTitle.PHONE_NUMBER_PAGE);
     });
 
-    it('should show error notify', async () => {
+    it('should not input special character', async () => {
         await Halome.enterPhoneNumber(phoneNumber.PHONE);
         await Halome.clickStartLogin();
+
+        await Halome.enterOtp1(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp1).toHaveValue('');
+
+        await Halome.enterOtp2(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp2).toHaveValue('');
+
+        await Halome.enterOtp3(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp3).toHaveValue('');
+
+        await Halome.enterOtp4(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp4).toHaveValue('');
+
+        await Halome.enterOtp5(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp5).toHaveValue('');
+
+        await Halome.enterOtp6(Halome.randomSpecialCharacter());
+        await expect(Halome.inputOtp6).toHaveValue('');
+    });
+
+    it('should not input alphabet', async () => {
+        await Halome.enterOtp1(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp1).toHaveValue('');
+
+        await Halome.enterOtp2(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp2).toHaveValue('');
+
+        await Halome.enterOtp3(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp3).toHaveValue('');
+
+        await Halome.enterOtp4(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp4).toHaveValue('');
+
+        await Halome.enterOtp5(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp5).toHaveValue('');
+
+        await Halome.enterOtp6(Halome.ramdomAlphabet());
+        await expect(Halome.inputOtp6).toHaveValue('');
+    });
+
+    it('should show error notify', async () => {
         await Halome.enterOtp(otp.OTP_FALSE);
         await expect(Halome.otpErrorVerify).toBeExisting();
+    });
+
+    it('should focus at Character 1 after input false', async () => {
+        await expect(Halome.inputOtp1).toBeFocused();
+    });
+
+    it('should enable button resend when not enter otp after 1 minute', async () => {
+        await Halome.btnVerifyResend.waitForEnabled({ timeout: 60000 });
+        await expect(Halome.btnVerifyResend).not.toBeDisabled();
     });
 
     it('should not existing resend Otp via SMS button', async () => {

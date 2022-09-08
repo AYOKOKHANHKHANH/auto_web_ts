@@ -16,6 +16,7 @@ describe('TEST FORGOT PIN FLOWS', async () => {
     it('should into input OTP page', async () => {
         await ForgotPin.clickForgotPinCode();
         await expect(ForgotPin.titleVerify).toHaveText(verifyTitle.OTP_HAHALOLO);
+        await expect(ForgotPin.btnResendOtp).toBeDisabled();
     });
 
     it('should existing forgot pin code button when click cancel', async () => {

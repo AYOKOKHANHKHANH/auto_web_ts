@@ -25,8 +25,8 @@ export const phoneNumber = {
 
 export const invalidValue = {
     LESS_THAN_6: '8758',
-    SPECIAL_CHARACTERS: '@#$%!^&*(^',
-    ALPHABET: 'abcdef',
+    SPECIAL_CHARACTERS: '!~`#$%^&*()_+=-[{}]:;<,>.',
+    ALPHABET: 'abcdefjhijklmnopqrstuvwxyz',
 };
 
 export const displayName = {

@@ -11,6 +11,7 @@ describe('TEST RESET PIN CODE FLOWS', async () => {
         await Hahalolo.enterUsername(username.USERNAME);
         await Hahalolo.enterPassword(password.PASSWORD);
         await Hahalolo.clickLogin();
+        await browser.pause(1000);
         await Hahalolo.clickContinue();
         await ForgotPin.clickForgotPinCode();
         await ForgotPin.enterOtp(otp.OTP);

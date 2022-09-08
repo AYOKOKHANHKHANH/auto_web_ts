@@ -1,7 +1,7 @@
 exports.config = {
     specs: ['./test/specs/**/*.ts'],
     exclude: [],
-    maxInstances: 10,
+    maxInstances: 1,
     capabilities: [
         {
             maxInstances: 1,
@@ -9,18 +9,12 @@ exports.config = {
             acceptInsecureCerts: true,
         },
         // {
-        //     maxInstances: 1,
-        //     browserName: 'edge',
-        //     acceptInsecureCerts: true,
-        // },
-        // {
-        //     maxInstances: 1,
         //     browserName: 'firefox',
         //     acceptInsecureCerts: true,
         // },
         // {
-        //     maxInstances: 5,
-        //     browserName: 'opera',
+        //     maxInstances: 1,
+        //     browserName: 'edge',
         //     acceptInsecureCerts: true,
         // },
     ],
@@ -30,7 +24,7 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['geckodriver'],
+    services: ['selenium-standalone'],
     framework: 'mocha',
     reporters: ['spec'],
     mochaOpts: {
