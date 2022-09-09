@@ -4,7 +4,7 @@ export const pin = {
 };
 
 export const username = {
-    USERNAME: 'halome023@skyoi.tk',
+    USERNAME: 'halome025@skyoi.tk',
     USERNAME_FALSE: '',
 };
 
@@ -20,7 +20,6 @@ export const otp = {
 
 export const phoneNumber = {
     PHONE: '84338061946',
-    NEW_PHONE: Math.floor(Math.random() * 100000000000).toString(),
 };
 
 export const invalidValue = {

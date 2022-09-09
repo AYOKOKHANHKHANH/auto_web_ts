@@ -1,7 +1,6 @@
 import Page from '../../../page';
 
 class Halome extends Page {
-    TIMEOUT = 10000;
     get inputPhoneNumber() {
         return $('input[id="phone-login-form-input-phone"]');
     }
@@ -107,7 +106,7 @@ class Halome extends Page {
     }
 
     async clickStartLogin() {
-        await this.btnStartLogin.waitForClickable({ timeout: this.TIMEOUT });
+        await this.btnStartLogin.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.btnStartLogin.click();
     }
 
@@ -120,12 +119,12 @@ class Halome extends Page {
     }
 
     async enterOtp(Otp) {
-        await this.inputOtp.waitForDisplayed({ timeout: this.TIMEOUT });
+        await this.inputOtp.waitForDisplayed({ timeout: this.timeoutDisplay() });
         await this.inputOtp.setValue(Otp);
     }
 
     async enterDisplayName(name) {
-        await this.inputDisplayName.waitForDisplayed({ timeout: this.TIMEOUT });
+        await this.inputDisplayName.waitForDisplayed({ timeout: this.timeoutDisplay() });
         return this.inputDisplayName.setValue(name);
     }
 

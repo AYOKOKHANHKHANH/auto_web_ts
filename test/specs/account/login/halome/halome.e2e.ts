@@ -89,22 +89,21 @@ describe('TEST Halome LOGIN FLOWS', async () => {
     });
 
     it('should not input alphabet', async () => {
-        await Halome.enterOtp1(Halome.ramdomAlphabet());
+        await Halome.enterOtp1(Halome.randomAlphabet());
         await expect(Halome.inputOtp1).toHaveValue('');
 
-        await Halome.enterOtp2(Halome.ramdomAlphabet());
+        await Halome.enterOtp2(Halome.randomAlphabet());
         await expect(Halome.inputOtp2).toHaveValue('');
 
-        await Halome.enterOtp3(Halome.ramdomAlphabet());
+        await Halome.enterOtp3(Halome.randomAlphabet());
         await expect(Halome.inputOtp3).toHaveValue('');
 
-        await Halome.enterOtp4(Halome.ramdomAlphabet());
+        await Halome.enterOtp4(Halome.randomAlphabet());
         await expect(Halome.inputOtp4).toHaveValue('');
 
-        await Halome.enterOtp5(Halome.ramdomAlphabet());
+        await Halome.enterOtp5(Halome.randomAlphabet());
         await expect(Halome.inputOtp5).toHaveValue('');
-
-        await Halome.enterOtp6(Halome.ramdomAlphabet());
+        await Halome.enterOtp6(Halome.randomAlphabet());
         await expect(Halome.inputOtp6).toHaveValue('');
     });
 
@@ -118,7 +117,7 @@ describe('TEST Halome LOGIN FLOWS', async () => {
     });
 
     it('should enable button resend when not enter otp after 1 minute', async () => {
-        await Halome.btnVerifyResend.waitForEnabled({ timeout: 60000 });
+        await Halome.btnVerifyResend.waitForEnabled({ timeout: Halome.timeoutResendCode() });
         await expect(Halome.btnVerifyResend).not.toBeDisabled();
     });
 

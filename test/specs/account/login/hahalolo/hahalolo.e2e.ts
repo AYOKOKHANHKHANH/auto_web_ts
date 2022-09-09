@@ -45,10 +45,18 @@ describe('TEST LOGIN HAHALOLO FLOWS', async () => {
         await expect(Hahalolo.titleLogin).toHaveText(verifyTitle.ENTER_PIN_PAGE);
     });
 
+    it('should focus at Character 1', async () => {
+        await expect(Hahalolo.inputPin1).toBeFocused();
+    });
+
     it('should show error notify when input pin code is false', async () => {
         await Hahalolo.enterPinCode(pin.PIN_FALSE);
         await Hahalolo.clickAccept();
         await expect(Hahalolo.notifyPinFalse).toBeExisting();
+    });
+
+    it('should focus at Character 1', async () => {
+        await expect(Hahalolo.inputPin1).toBeFocused();
     });
 
     it('should back to welcome page', async () => {
@@ -62,14 +70,44 @@ describe('TEST LOGIN HAHALOLO FLOWS', async () => {
         await expect(Hahalolo.btnAccept).toBeDisabled();
     });
 
-    it('should disable accept button when input pin code is special character', async () => {
-        await Hahalolo.enterPinCode(invalidValue.SPECIAL_CHARACTERS);
-        await expect(Hahalolo.btnAccept).toBeDisabled();
+    it('should not enter special character', async () => {
+        await Hahalolo.enterPin1(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin1).toHaveValue('');
+
+        await Hahalolo.enterPin2(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin2).toHaveValue('');
+
+        await Hahalolo.enterPin3(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin3).toHaveValue('');
+
+        await Hahalolo.enterPin4(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin4).toHaveValue('');
+
+        await Hahalolo.enterPin5(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin5).toHaveValue('');
+
+        await Hahalolo.enterPin6(Hahalolo.randomSpecialCharacter());
+        await expect(Hahalolo.inputPin6).toHaveValue('');
     });
 
-    it('should disable accept button when input pin code is alphabet', async () => {
-        await Hahalolo.enterPinCode(invalidValue.ALPHABET);
-        await expect(Hahalolo.btnAccept).toBeDisabled();
+    it('should not enter alphabet', async () => {
+        await Hahalolo.enterPin1(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin1).toHaveValue('');
+
+        await Hahalolo.enterPin2(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin2).toHaveValue('');
+
+        await Hahalolo.enterPin3(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin3).toHaveValue('');
+
+        await Hahalolo.enterPin4(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin4).toHaveValue('');
+
+        await Hahalolo.enterPin5(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin5).toHaveValue('');
+
+        await Hahalolo.enterPin6(Hahalolo.randomAlphabet());
+        await expect(Hahalolo.inputPin6).toHaveValue('');
     });
 
     it('should disable accept button when input pin code less more than 6', async () => {

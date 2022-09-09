@@ -1,8 +1,7 @@
-import { username, password, pin } from '../../../../data/login';
+import { password, pin, username } from '../../../../data/login';
 import Page from '../../../page';
 
 class Hahalolo extends Page {
-    TIMEOUT = 20000;
     get btnLoginHahalolo() {
         return $('button[id="platforms-halo"]');
     }
@@ -44,35 +43,83 @@ class Hahalolo extends Page {
     }
 
     get inputPinCode() {
-        return $('input[id="phone-verify-form-input-1"]');
+        return $('#phone-verify-form-input-1');
     }
 
     get notifyPinFalse() {
         return $('#otp-form-need-error');
     }
 
+    get inputPin1() {
+        return $('[aria-label="Character 1."]');
+    }
+
+    get inputPin2() {
+        return $('[aria-label="Character 2."]');
+    }
+
+    get inputPin3() {
+        return $('[aria-label="Character 3."]');
+    }
+
+    get inputPin4() {
+        return $('[aria-label="Character 4."]');
+    }
+
+    get inputPin5() {
+        return $('[aria-label="Character 5."]');
+    }
+
+    get inputPin6() {
+        return $('[aria-label="Character 6."]');
+    }
+
+    async enterPin1(pin) {
+        return this.inputPin1.setValue(pin);
+    }
+
+    async enterPin2(pin) {
+        return this.inputPin2.setValue(pin);
+    }
+
+    async enterPin3(pin) {
+        return this.inputPin3.setValue(pin);
+    }
+
+    async enterPin4(pin) {
+        return this.inputPin4.setValue(pin);
+    }
+
+    async enterPin5(pin) {
+        return this.inputPin5.setValue(pin);
+    }
+
+    async enterPin6(pin) {
+        return this.inputPin6.setValue(pin);
+    }
+
     async clickLoginHahalolo() {
-        await this.btnLoginHahalolo.waitForClickable({ timeout: this.TIMEOUT });
+        await this.btnLoginHahalolo.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.btnLoginHahalolo.click();
     }
 
     async clickNotYou() {
-        await this.btnNotYou.waitForClickable({ timeout: this.TIMEOUT });
+        await this.btnNotYou.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.btnNotYou.click();
     }
 
     async clickLogin() {
-        await this.btnLogin.waitForClickable({ timeout: this.TIMEOUT });
+        await this.btnLogin.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.btnLogin.click();
     }
 
     async enterUsername(username) {
-        await this.inputUsername.waitForClickable({ timeout: this.TIMEOUT });
+        await this.inputUsername.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.inputUsername.setValue(username);
     }
 
     async enterPassword(password) {
-        await this.inputPassword.waitForClickable({ timeout: this.TIMEOUT });
+        await this.inputPassword.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.inputPassword.setValue(password);
     }
 
@@ -81,12 +128,12 @@ class Hahalolo extends Page {
     }
 
     async clickContinue() {
-        await this.btnContinue.waitForDisplayed({ timeout: this.TIMEOUT });
+        await this.btnContinue.waitForDisplayed({ timeout: this.timeoutDisplay() });
         return this.btnContinue.click();
     }
 
     async clickAccept() {
-        await this.btnAccept.waitForClickable({ timeout: this.TIMEOUT });
+        await this.btnAccept.waitForClickable({ timeout: this.timeoutDisplay() });
         return this.btnAccept.click();
     }
 

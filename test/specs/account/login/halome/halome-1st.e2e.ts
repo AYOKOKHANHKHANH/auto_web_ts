@@ -1,6 +1,7 @@
 import { displayName, otp, phoneNumber } from '../../../../data/login';
 import { verifyTitle } from '../../../../data/verify-title';
 import Halome from '../../../../pageobjects/account/login/halome/halome';
+import Logout from '../../../../pageobjects/account/logout/logout';
 import LeftSidebar from '../../../../pageobjects/left-sidebar/left-sidebar';
 
 describe('TESS THE FIRST HALOME LOGIN FLOWS', async () => {
@@ -10,14 +11,16 @@ describe('TESS THE FIRST HALOME LOGIN FLOWS', async () => {
     });
 
     it('should disable Resend button', async () => {
-        await Halome.enterPhoneNumber(phoneNumber.NEW_PHONE);
+        await Halome.enterPhoneNumber(Halome.randomPhoneNumber());
+        await expect(Halome.inputPhoneNumber).toBeExisting();
+        // await browser.pause(2000);
         await Halome.clickStartLogin();
         await expect(Halome.btnResendOtpViaSms).not.toBeExisting();
         await expect(Halome.btnVerifyResend).toBeDisabled();
     });
 
     it('should enable Resend button after 60s', async () => {
-        await Halome.btnVerifyResend.waitForEnabled({ timeout: 61000 });
+        await Halome.btnVerifyResend.waitForEnabled({ timeout: Halome.timeoutResendCode() });
         await expect(Halome.btnVerifyResend).not.toBeDisabled();
     });
 
@@ -40,5 +43,14 @@ describe('TESS THE FIRST HALOME LOGIN FLOWS', async () => {
         await Halome.clickContinue();
         await LeftSidebar.clickAvatar();
         await expect(Halome.displayNameVerify).toHaveText(displayName.DISPLAY_NAME);
+    });
+
+    it('should log in successful when display name is empty', async () => {
+        await Logout.logoutSuccess();
+        await Halome.clickLoginHalome();
+        await Halome.enterPhoneNumber(Halome.randomPhoneNumber());
+        await Halome.clickStartLogin();
+        await Halome.enterOtp(otp.OTP);
+        await Halome.clickContinue();
     });
 });

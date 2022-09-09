@@ -1,5 +1,5 @@
 exports.config = {
-    specs: ['./test/specs/**/*.ts'],
+    specs: ['./test/specs/**/*.e2e.ts'],
     exclude: [],
     maxInstances: 1,
     capabilities: [
@@ -8,15 +8,15 @@ exports.config = {
             browserName: 'chrome',
             acceptInsecureCerts: true,
         },
-        // {
-        //     browserName: 'firefox',
-        //     acceptInsecureCerts: true,
-        // },
-        // {
-        //     maxInstances: 1,
-        //     browserName: 'edge',
-        //     acceptInsecureCerts: true,
-        // },
+        {
+            browserName: 'firefox',
+            acceptInsecureCerts: true,
+        },
+        {
+            maxInstances: 1,
+            browserName: 'edge',
+            acceptInsecureCerts: true,
+        },
     ],
     logLevel: 'info',
     bail: 0,

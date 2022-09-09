@@ -19,6 +19,50 @@ describe('TEST FORGOT PIN FLOWS', async () => {
         await expect(ForgotPin.btnResendOtp).toBeDisabled();
     });
 
+    it('should focus at Character 1', async () => {
+        await expect(ForgotPin.inputOtp1).toBeFocused();
+    });
+
+    it('should not enter special charactor', async () => {
+        await ForgotPin.enterOtp1(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp1).toHaveValue('');
+
+        await ForgotPin.enterOtp2(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp2).toHaveValue('');
+
+        await ForgotPin.enterOtp3(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp3).toHaveValue('');
+
+        await ForgotPin.enterOtp4(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp4).toHaveValue('');
+
+        await ForgotPin.enterOtp5(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp5).toHaveValue('');
+
+        await ForgotPin.enterOtp6(ForgotPin.randomSpecialCharacter());
+        await expect(ForgotPin.inputOtp6).toHaveValue('');
+    });
+
+    it('should not enter alphabet', async () => {
+        await ForgotPin.enterOtp1(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp1).toHaveValue('');
+
+        await ForgotPin.enterOtp2(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp2).toHaveValue('');
+
+        await ForgotPin.enterOtp3(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp3).toHaveValue('');
+
+        await ForgotPin.enterOtp4(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp4).toHaveValue('');
+
+        await ForgotPin.enterOtp5(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp5).toHaveValue('');
+
+        await ForgotPin.enterOtp6(ForgotPin.randomAlphabet());
+        await expect(ForgotPin.inputOtp6).toHaveValue('');
+    });
+
     it('should existing forgot pin code button when click cancel', async () => {
         await ForgotPin.clickCancel();
         await expect(ForgotPin.btnForgotPinCode).toBeExisting();
@@ -26,16 +70,6 @@ describe('TEST FORGOT PIN FLOWS', async () => {
 
     it('should disable accept button when not enter otp', async () => {
         await ForgotPin.clickForgotPinCode();
-        await expect(ForgotPin.btnAccept).toBeDisabled();
-    });
-
-    it('should disable accept button when input special charactor', async () => {
-        await ForgotPin.enterOtp(invalidValue.SPECIAL_CHARACTERS);
-        await expect(ForgotPin.btnAccept).toBeDisabled();
-    });
-
-    it('should disable accept button when input alphabet', async () => {
-        await ForgotPin.enterOtp(invalidValue.ALPHABET);
         await expect(ForgotPin.btnAccept).toBeDisabled();
     });
 
@@ -50,8 +84,12 @@ describe('TEST FORGOT PIN FLOWS', async () => {
         await expect(ForgotPin.notifyOtpFalse).toBeExisting();
     });
 
+    it('should focus at Character 1', async () => {
+        await expect(ForgotPin.inputOtp1).toBeFocused();
+    });
+
     it('should enable button resend when not enter otp after 1 minute', async () => {
-        await ForgotPin.btnResendOtp.waitForEnabled({ timeout: 60000 });
+        await ForgotPin.btnResendOtp.waitForEnabled({ timeout: ForgotPin.timeoutResendCode() });
         await expect(ForgotPin.btnResendOtp).not.toBeDisabled();
     });
 
